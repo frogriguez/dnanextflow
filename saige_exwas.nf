@@ -58,18 +58,18 @@ log.info """\
 
     """.stripIndent()
 
-include { SAIGE_PREPROCESSING } from '../processes/saige_preprocessing.nf'
+include { SAIGE_PREPROCESSING } from 'processes/saige_preprocessing.nf'
 
-include { SAIGE_STEP1 } from '../processes/saige_step1.nf'
+include { SAIGE_STEP1 } from 'processes/saige_step1.nf'
 
-include { SAIGE_GENE_STEP2 } from '../processes/saige_gene_step2.nf'
+include { SAIGE_GENE_STEP2 } from 'processes/saige_gene_step2.nf'
 
 include {
     merge_and_filter_saige_gene_regions_output
     merge_and_filter_saige_gene_singles_output
     make_summary_regions_output
     make_summary_singles_output
-    } from '../processes/saige_postprocessing.nf'
+    } from 'processes/saige_postprocessing.nf'
 
 include {
     make_pheno_covar_summary_plots
@@ -80,12 +80,12 @@ include {
     make_exwas_report_methods_blurb
     collect_exwas_regions_plots
     collect_exwas_singles_plots
-    } from '../processes/saige_visualization.nf'
+    } from 'processes/saige_visualization.nf'
 
 include {
     paramToList
     get_script_file_names
-} from '../processes/saige_helpers.nf'
+} from 'processes/saige_helpers.nf'
 
 workflow {
     // Get the script name manifest from the helper functions
